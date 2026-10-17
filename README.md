@@ -6,11 +6,6 @@ and get answers grounded in your own code, with file and line references.
 Built with **Java + Spring Boot + RAG (Retrieval-Augmented Generation) + Generative AI** on the
 backend and **Next.js** on the frontend.
 
-> 🚧 **Work in progress.** This project is being built step by step following the tutorial
-> [Complete Java Springboot project with RAG and GenAI](https://www.youtube.com/watch?v=R8VBA_KtUo0&list=WL&index=29&t=5754s).
-> Some code may be unused or not yet wired up while the project is in progress — it will be
-> reviewed and cleaned up once the project is complete.
-
 ---
 
 ## How it works
