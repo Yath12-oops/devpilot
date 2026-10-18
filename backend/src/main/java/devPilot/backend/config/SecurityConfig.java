@@ -17,17 +17,21 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import devpilot.backend.security.GitHubOAuth2UserService;
+import lombok.RequiredArgsConstructor;
+
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final GitHubOAuth2UserService gitHubOAuth2UserService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
             AuthenticationSuccessHandler oauth2SuccessHandler,
-            AuthenticationFailureHandler oauth2FailureHandler,
-            GitHubOAuth2UserService gitHubOAuth2UserService) throws Exception {
+            AuthenticationFailureHandler oauth2FailureHandler) throws Exception {
         http
             .cors(Customizer.withDefaults())
             .csrf(csrf -> csrf.disable())
