@@ -5,6 +5,7 @@ import { Suspense,useEffect } from 'react';
 import { AlertCircle } from 'lucide-react';
 
 import {GitHubIcon} from "@components/icons/github-icon";
+import {DevPilotIcon} from "@components/icons/devpilot-icon";
 import {BrandMark} from "@components/layout/app-shell";
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import { Alert,AlertDescription,AlertTitle } from '@/components/ui/alert';
@@ -13,6 +14,7 @@ import { buttonVariants } from '@/components/ui/button';
 import{Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components/ui/card";
 import { Spinner } from '@/components/ui/spinner';
 import { cn } from "@/lib/utils";
+import { getGithubLoginUrl } from '@/lib/api';
 
 function LoginLoading(){
     return (
@@ -30,10 +32,6 @@ const LoginContent = () =>{
     const user=null;
     const isLoading=false;
 
-    function getGithubLoginUrl() {
-        const base = process.env.NEXT_PUBLIC_API_URL ?? "";
-        return `${base}/oauth2/authorization/github?redirect=${encodeURIComponent(next)}`;
-    }
 
     useEffect(() => {
         if (user) {
@@ -59,7 +57,10 @@ const LoginContent = () =>{
 
             <main className="relative z-10 flex flex-1 items-center justify-center px-4 pb-10">
                 <Card className="w-full max-w-sm">
-                    <CardHeader className="text-center">
+                    <CardHeader className="justify-items-center text-center">
+                        <div className="flex size-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                            <DevPilotIcon className="size-5" />
+                        </div>
                         <CardTitle>Sign in</CardTitle>
                         <CardDescription className="leading-6">
                             Connect GitHub to chat with your repositories.

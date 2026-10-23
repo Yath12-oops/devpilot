@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { DevPilotIcon } from "@/components/icons/devpilot-icon";
 
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,7 @@ export function BrandMark({ className }: { className?: string }) {
       )}
     >
       <span className="flex size-8 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-        <Sparkles className="size-4" />
+        <DevPilotIcon className="size-4" />
       </span>
       DevPilot
     </span>
