@@ -15,6 +15,7 @@ import{Card,CardContent,CardDescription,CardHeader,CardTitle} from "@/components
 import { Spinner } from '@/components/ui/spinner';
 import { cn } from "@/lib/utils";
 import { getGithubLoginUrl } from '@/lib/api';
+import { useCurrentUser } from '@/hooks/use-auth';
 
 function LoginLoading(){
     return (
@@ -28,18 +29,16 @@ const LoginContent = () =>{
     const router=useRouter();
     const error=params.get("error");
     const next =params.get("next") || "/dashboard";
-
-    const user=null;
-    const isLoading=false;
+    const {data:user,isLoading}= useCurrentUser();
 
 
     useEffect(() => {
-        if (user) {
-            router.replace(next);
+        if (!isLoading && user) {
+            router.replace(next.startsWith("/")?next : "/dashboard");
         }
-    }, [user, router, next]);
+    }, [user, router, next, isLoading]);
 
-    if(isLoading){
+    if(isLoading || user){
         return <LoginLoading/>
     }
 
