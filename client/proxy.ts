@@ -31,6 +31,6 @@ if(pathname.startsWith("/dashboard") || pathname.startsWith("/chat")){
 }
 
 export const config= {
-    matcher : ["dashboard/:path*","/chat/:path*", "/login", "/auth/callback"],
+    matcher : ["/dashboard/:path*", "/chat/:path*", "/login", "/auth/callback"],
 };
 

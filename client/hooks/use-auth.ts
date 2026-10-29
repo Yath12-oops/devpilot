@@ -42,9 +42,9 @@ export function useLogout(){
         mutationFn: async()=>{
             await api.logout();
         },
-        onSuccess:() =>{
+        onSettled:() =>{
             setAuthCookie(false);
-            queryClient.invalidateQueries({queryKey:queryKeys.auth.all});
+            queryClient.removeQueries({queryKey:queryKeys.auth.all});
             router.replace("/login");
         }
     })

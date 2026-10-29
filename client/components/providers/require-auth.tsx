@@ -16,20 +16,19 @@ export function RequireAuth( {children} :{children: React.ReactNode}){
     const router =useRouter();
 
     useEffect(()=>{
-        if(!isLoading && !user){
+        if(!isLoading && (isError || !user)){
             router.replace("/login");
         }
-    }, [isLoading,user,router]);
+    }, [isLoading,isError,user,router]);
 
     if(isLoading){
-
-            return (
-        <div className="flex items-center gap-2">
-            <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600">
-            <Spinner className="size-6"/>
-            <p className="text-sm">Loading your workspace</p>
-           </div>
-         </div>
+        return (
+            <div className="flex min-h-svh flex-col items-center justify-center gap-3">
+                <Spinner className="size-8" />
+                <p className="text-sm text-muted-foreground">
+                    Loading your workspace
+                </p>
+            </div>
         );
     }
     if(isError || !user) return null;

@@ -29,16 +29,16 @@ const LoginContent = () =>{
     const router=useRouter();
     const error=params.get("error");
     const next =params.get("next") || "/dashboard";
-    const {data:user,isLoading}= useCurrentUser();
+    const {data:user,isLoading,isError}= useCurrentUser();
 
 
     useEffect(() => {
-        if (!isLoading && user) {
+        if (!isLoading && user && !isError) {
             router.replace(next.startsWith("/")?next : "/dashboard");
         }
-    }, [user, router, next, isLoading]);
+    }, [user, router, next, isLoading, isError]);
 
-    if(isLoading || user){
+    if(isLoading || (user && !isError)){
         return <LoginLoading/>
     }
 
