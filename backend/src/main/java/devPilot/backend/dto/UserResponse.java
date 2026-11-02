@@ -1,4 +1,4 @@
-package devpilot.backend.dto;
+package devPilot.backend.dto;
 
 import java.util.UUID;
 

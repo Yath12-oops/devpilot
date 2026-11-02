@@ -1,4 +1,4 @@
-package devpilot.backend.config;
+package devPilot.backend.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
-import devpilot.backend.security.GitHubOAuth2UserService;
+import devPilot.backend.security.GitHubOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 
 

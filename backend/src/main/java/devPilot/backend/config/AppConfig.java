@@ -1,5 +1,5 @@
 
-package devpilot.backend.config;
+package devPilot.backend.config;
 
 import java.util.concurrent.Executor;
 

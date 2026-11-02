@@ -1,5 +1,5 @@
 
-package devpilot.backend.exceptions;
+package devPilot.backend.exceptions;
 
 import org.springframework.http.HttpStatus;
 import java.util.Map;

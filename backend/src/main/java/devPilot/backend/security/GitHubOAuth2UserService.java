@@ -1,4 +1,4 @@
-package devpilot.backend.security;
+package devPilot.backend.security;
 
 import java.util.stream.Collectors;
 
@@ -9,8 +9,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import devpilot.backend.entity.User;
-import devpilot.backend.services.UserService;
+import devPilot.backend.entity.User;
+import devPilot.backend.services.UserService;
 
 @Service
 public class GitHubOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
