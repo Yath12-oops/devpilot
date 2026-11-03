@@ -1,6 +1,8 @@
 package devPilot.backend.services.github;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +52,38 @@ public class GithubApiClient {
         }
         return all;
     }
+
+    public Map<String,Object> getRepoTree(String accessToken, String owner, String repo,String branch){
+        return client(accessToken)
+                .get()
+                .uri("/repos/{owner}/{repo}/git/trees/{branch}?recursive=1", owner, repo, branch)
+                .retrieve()
+                .body(MAP);
+    }
+
+    public String getFileContent(String accessToken, String owner, String repo, String path){
+        Map<String,Object> body=client(accessToken)
+                .get()
+                .uri("/repos/{owner}/{repo}/contents/{path}", owner, repo, path)
+                .retrieve()
+                .body(MAP);
+        if(body==null){
+            return null;
+        }
+        Object encoding=body.get("encoding");
+        Object content=body.get("content");
+        if(content==null){
+            return null;
+        }
+        if("base64".equals(String.valueOf(encoding))){
+            String raw =String.valueOf(content).replaceAll("\\s","");
+            return new String(Base64.getDecoder().decode(raw),StandardCharsets.UTF_8);
+        }
+
+        return String.valueOf(content);
+    }
+
+
     private RestClient client(String accessToken){
         return restClientBuilder
                 .baseUrl(API_BASE)
